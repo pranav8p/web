@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course & DT Projects | VIT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container my-4">
+  <h2 class="text-center">VIT Projects: Course & DT</h2>
+  <ul class="nav nav-pills mb-3 justify-content-center" id="project-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="course-tab" data-bs-toggle="pill" data-bs-target="#course" type="button" role="tab">Course Projects</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="dt-tab" data-bs-toggle="pill" data-bs-target="#dt" type="button" role="tab">DT Projects</button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="project-tabsContent">
+    <!-- Course Projects Tab -->
+    <div class="tab-pane fade show active" id="course" role="tabpanel">
+      <div class="card p-3">
+        <h4>Add Course Project</h4>
+        <form id="course-form">
+          <input type="text" class="form-control my-2" id="course-title" placeholder="Project Title" required>
+          <input type="text" class="form-control my-2" id="course-desc" placeholder="Description" required>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <hr>
+        <h5>All Course Projects</h5>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr><th>Title</th><th>Description</th><th>Action</th></tr>
+              </thead>
+              
+          <tbody id="course-list"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DT Projects Tab -->
+    <div class="tab-pane fade" id="dt" role="tabpanel">
+      <div class="card p-3">
+        <h4>Add DT Project</h4>
+        <form id="dt-form">
+          <input type="text" class="form-control my-2" id="dt-title" placeholder="Project Title" required>
+          <input type="text" class="form-control my-2" id="dt-desc" placeholder="Description" required>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <hr>
+        <h5>All DT Projects</h5>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr><th>Title</th><th>Description</th><th>Action</th></tr>
+              </thead>
+              
+          <tbody id="dt-list"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
