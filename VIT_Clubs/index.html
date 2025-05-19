@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VIT Clubs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">VIT Clubs Directory</h2>
+
+    <!-- Search -->
+    <div class="mb-3">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search clubs...">
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-pills mb-4" id="clubTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="pill" data-category="Technical">Technical</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-category="Cultural">Cultural</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-category="Sports">Sports</button>
+      </li>
+    </ul>
+
+    <!-- Club Cards -->
+    <div id="clubList" class="row g-3"></div>
+
+    <!-- Add Club Form -->
+    <div class="card mt-5">
+      <div class="card-header">Add New Club</div>
+      <div class="card-body">
+        <form id="clubForm">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="clubName" placeholder="Club Name" required>
+          </div>
+          <div class="mb-3">
+            <select id="clubCategory" class="form-select" required>
+              <option value="">Select Category</option>
+              <option value="Technical">Technical</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" id="clubDescription" placeholder="Club Description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Club</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  
+  <!-- Toast Container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="toastMsg">Success</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+        </div>
+    </div>
+  
+</body>
+</html>
