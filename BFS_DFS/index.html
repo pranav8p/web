@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BFS & DFS Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>BFS & DFS Visualizer</h1>
+    
+    <label for="graphInput">Graph (Adjacency List as JSON):</label>
+    <textarea id="graphInput" rows="5">
+{
+  "1": [2, 3],
+  "2": [4],
+  "3": [],
+  "4": []
+}
+    </textarea>
+
+    <label for="startNode">Start Node:</label>
+    <input type="number" id="startNode" value="1">
+
+    <div class="buttons">
+      <button onclick="runBFS()">Run BFS</button>
+      <button onclick="runDFS()">Run DFS</button>
+    </div>
+
+    <div class="output">
+      <h3>Traversal Output:</h3>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
