@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Electricity Bill Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card-custom {
+      border: none;
+      border-radius: 1rem;
+      padding: 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      transition: 0.3s ease-in-out;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control, .form-select {
+      border-radius: 0.5rem;
+    }
+
+    .btn-custom {
+      background-color: #007bff;
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      padding: 0.6rem 1.5rem;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #007bff;
+      margin-top: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card card-custom">
+          <div class="text-center mb-4">
+            <h3 class="fw-bold">Electricity Bill Calculator</h3>
+            <p class="text-muted">Enter the details to calculate your monthly bill</p>
+          </div>
+
+          <form id="billForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Consumer Name</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                <input type="text" class="form-control" id="address" placeholder="123 Main Street" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="units" class="form-label">Units Consumed</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-bolt"></i></span>
+                <input type="number" class="form-control" id="units" placeholder="e.g. 180" min="1" required>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="month" class="form-label">Billing Month</label>
+              <select class="form-select" id="month" required>
+                <option selected disabled value="">Choose month</option>
+                <option>January</option>
+                <option>February</option>
+                <option>March</option>
+                <option>April</option>
+                <option>May</option>
+                <option>June</option>
+                <option>July</option>
+                <option>August</option>
+                <option>September</option>
+                <option>October</option>
+                <option>November</option>
+                <option>December</option>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-custom">
+                <i class="fas fa-calculator me-2"></i>Calculate Bill
+              </button>
+            </div>
+          </form>
+
+          <div class="text-center" id="result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $("#billForm").submit(function (e) {
+      e.preventDefault();
+
+      const data = {
+        name: $("#name").val(),
+        address: $("#address").val(),
+        units: $("#units").val(),
+        month: $("#month").val()
+      };
+
+      $.ajax({
+        url: "http://localhost:3000/api/create-bill",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (res) {
+          $("#result").html("Total Bill Amount: ₹" + res.amount.toFixed(2));
+        },
+        error: function (xhr) {
+          $("#result").html("Error calculating bill.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
